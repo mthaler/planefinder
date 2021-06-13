@@ -11,7 +11,7 @@ class PlaneController(private val pfService: PlaneFinderService) {
     @ResponseBody
     @GetMapping("/aircraft")
     @Throws(IOException::class)
-    fun getCurrentAircraft(): Iterable<Aircraft?>? {
+    fun getCurrentAircraft(): Iterable<Aircraft> {
         return pfService.getAircraft()
     }
 }
