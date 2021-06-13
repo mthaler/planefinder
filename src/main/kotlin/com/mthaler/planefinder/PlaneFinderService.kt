@@ -42,7 +42,7 @@ class PlaneFinderService(private val repo: PlaneRepository) {
         }
     }
 
-    private open fun saveSamplePositions(): Iterable<Aircraft?>? {
+    private fun saveSamplePositions(): Iterable<Aircraft> {
         repo.deleteAll()
 
         // Spring Airlines flight 001 en route, flying STL to SFO, at 30000' currently over Kansas City

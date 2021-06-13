@@ -37,9 +37,26 @@ data class Aircraft(
     @JsonProperty("is_on_ground")
     val isOnGround: Boolean = false,
     @JsonProperty("last_seen_time")
-    val lastSeenTime: Instant? = null,
+    var lastSeenTime: Instant? = null,
     @JsonProperty("pos_update_time")
-    val posUpdateTime: Instant? = null,
+    var posUpdateTime: Instant? = null,
     @JsonProperty("bds40_seen_time")
-    val bds40SeenTime: Instant? = null
-)
+    var bds40SeenTime: Instant? = null
+) {
+
+    constructor(callsign: String, reg: String, flightno: String, type: String, altitude: Int, heading: Int, speed: Int, lat: Double, lon: Double) :
+            this(null, callsign, "sqwk", reg, flightno, "route", type, "ct", altitude, heading, speed, 0, 0,
+            lat, lon, 0.0, 0.0, 0.0, false, true, Instant.now(), Instant.now(), Instant.now())
+
+    fun setLastSeenTime(lastSeenTime: Long) {
+        this.lastSeenTime = Instant.ofEpochSecond(lastSeenTime)
+    }
+
+    fun setPosUpdateTime(posUpdateTime: Long) {
+        this.posUpdateTime = Instant.ofEpochSecond(posUpdateTime)
+    }
+
+    fun setBds40SeenTime(bds40SeenTime: Long) {
+        this.bds40SeenTime = Instant.ofEpochSecond(bds40SeenTime)
+    }
+}
