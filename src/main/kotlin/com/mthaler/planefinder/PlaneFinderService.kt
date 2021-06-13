@@ -46,14 +46,14 @@ class PlaneFinderService(private val repo: PlaneRepository) {
         repo.deleteAll()
 
         // Spring Airlines flight 001 en route, flying STL to SFO, at 30000' currently over Kansas City
-        val ac1 = Aircraft("SAL001", "N12345", "SAL001", "LJ", 30000, 280, 440, 39.2979849, (-94.71921).toInt())
+        val ac1 = Aircraft("SAL001", "N12345", "SAL001", "LJ", 30000, 280, 440, 39.2979849, -94.71921)
 
         // Spring Airlines flight 002 en route, flying SFO to STL, at 40000' currently over Denver
-        val ac2 = Aircraft("SAL002", "N54321", "SAL002", "LJ", 40000, 65, 440, 39.8560963, (-104.6759263).toInt())
+        val ac2 = Aircraft("SAL002", "N54321", "SAL002", "LJ", 40000, 65, 440, 39.8560963, -104.6759263)
 
         // Spring Airlines flight 002 en route, flying SFO to STL, at 40000' currently just past DEN
-        val ac3 = Aircraft("SAL002", "N54321", "SAL002", "LJ", 40000, 65, 440, 39.8412964, (-105.0048267).toInt()
-        )
+        val ac3 = Aircraft("SAL002", "N54321", "SAL002", "LJ", 40000, 65, 440, 39.8412964, -105.0048267)
+
         return repo.saveAll(List.of(ac1, ac2, ac3))
     }
 }
