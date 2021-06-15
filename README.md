@@ -95,3 +95,7 @@ Transfer-Encoding: chunked
     }
 ]
 ```
+
+## Reactive implementation
+
+The `reactive` branch contains a fully reactive implementation using [Project Reactor](https://projectreactor.io/), [R2DBC](https://r2dbc.io/) and Spring WebFlux.
