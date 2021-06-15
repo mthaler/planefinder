@@ -1,5 +1,5 @@
 package com.mthaler.planefinder
 
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 
-interface PlaneRepository: CrudRepository<Aircraft, Long>
+interface PlaneRepository: ReactiveCrudRepository<Aircraft, Long>
