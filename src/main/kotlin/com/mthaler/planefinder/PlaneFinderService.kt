@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Flux
 import java.io.IOException
 import java.net.URL
 import java.util.List
@@ -14,7 +15,7 @@ class PlaneFinderService(private val repo: PlaneRepository) {
     private val acURL = URL("http://192.168.1.193/ajax/aircraft")
     private val om = ObjectMapper()
 
-    fun getAircraft(): Iterable<Aircraft> {
+    fun getAircraft(): Flux<Aircraft> {
         val positions: MutableList<Aircraft> = ArrayList()
         var aircraftNodes: JsonNode? = null
         try {
@@ -42,7 +43,7 @@ class PlaneFinderService(private val repo: PlaneRepository) {
         }
     }
 
-    private fun saveSamplePositions(): Iterable<Aircraft> {
+    private fun saveSamplePositions(): Flux<Aircraft> {
         repo.deleteAll()
 
         // Spring Airlines flight 001 en route, flying STL to SFO, at 30000' currently over Kansas City
